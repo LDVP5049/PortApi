@@ -2,9 +2,7 @@
 using Portafolio.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Portafolio.Api.Controllers;
-
 
 [ApiController]
 [Route("Api/[Controller]")]
@@ -40,7 +38,7 @@ public class ProyectosController : ControllerBase
         if (mproyectos == null)
             return BadRequest();
         if (mproyectos.NombreP == string.Empty)
-            ModelState.AddModelError("Nombre", "El nombre no debe estar vacio");
+            ModelState.AddModelError("Nombre", "El nombre no debe estar vacio"); //BELLAKITA
 
         await _proyectoServices.InsertProyecto(mproyectos);
 
