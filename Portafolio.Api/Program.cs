@@ -14,9 +14,9 @@ builder.Services.AddSwaggerGen();
 //builder services
 builder.Services.AddScoped<ProyectosServices>();
 //CORS RULE
-builder.Services.AddCors(options => options.AddPolicy("AngularClient", policy =>
+builder.Services.AddCors(options => options.AddPolicy("AnyClient", policy =>
 {
-    policy.WithOrigins("http://localhost:4200")
+    policy.WithOrigins()
     .AllowAnyMethod()
     .AllowAnyHeader();
 }));
@@ -32,10 +32,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AnyClient");
+
 app.UseAuthorization();
+
 
 app.MapControllers();
 
-app.UseCors("AngularClient");
 
 app.Run();
